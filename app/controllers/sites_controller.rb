@@ -12,6 +12,8 @@ class SitesController < ApplicationController
 
 
   def show
+    @site = Site.find(params[:id])
+    @recent_checks = @site.checks.order(created_at: :desc).limit(10)
   end
 
 
