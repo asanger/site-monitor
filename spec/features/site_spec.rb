@@ -1,7 +1,5 @@
 RSpec.describe Site, :type => :feature do
-  def site_path(site)
-    "/account_management/accounts/#{account.to_param}"
-  end
+  
   let(:site){create(:site, url: "http://www.google.com")}
 
   describe "Create Site" do
