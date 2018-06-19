@@ -10,8 +10,10 @@ RSpec.describe SitesController, type: :controller do
   end
 
   describe "GET #show" do
+    site = FactoryBot.create(:site, url: "http://www.google.com")
+
     it "returns http success" do
-      get :show
+      get :show, params: { id: site.id }
       expect(response).to have_http_status(:success)
     end
   end
