@@ -6,15 +6,25 @@ class SitesController < ApplicationController
   end
 
 
+  def new
+  	@site = Site.new
+  end
+
+
   def show
   end
 
 
-  def new
-  end
-
-
   def create
+    @site = Site.new(site_params)
+
+    if @site.save
+      flash[:success] = "Site has been added successfully."
+      redirect_to sites_path
+    else
+      flash[:error] = "Sorry, something went wrong."
+      render new_site_path
+    end
   end
 
 
@@ -24,5 +34,12 @@ class SitesController < ApplicationController
 
   def destroy
   end
+
+
+ private
+
+	def site_params
+	  params.require(:site).permit(:url)
+	end
 
 end

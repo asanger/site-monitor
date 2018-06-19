@@ -1,0 +1,6 @@
+<h1>New Site</h1>
+
+<%= form_for @site, url: {action: "create"} do |f| %>
+  <%= f.text_field :url %>
+  <%= f.submit "Add" %>
+<% end %>
